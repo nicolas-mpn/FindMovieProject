@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>LOGIN</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=PT+Sans+Narrow:wght@400;700&family=Quicksand:wght@300..700&display=swap"
+        rel="stylesheet">
+    <style>
+        .bebas-neue-regular {
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #8e44ad, #000);
+            transition: background 0.5s ease;
+        }
+
+        .login-container {
+            display: flex;
+            width: 600px;
+            height: 400px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+
+        .left-side,
+        .right-side {
+            flex: 1;
+
+            padding: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .right-side {
+            background-color: #fff;
+            transform: translateX(100%);
+        }
+
+        .show-right .left-side {
+            transform: translateX(-100%);
+        }
+
+        .show-right .right-side {
+            transform: translateX(0);
+        }
+
+        .message {
+            font-size: 18px;
+            margin-bottom: 10px;
+            position: relative;
+            top: 15px;
+        }
+
+        .button {
+            background-color: #4b055e;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            position: relative;
+            top: 25px;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-form input {
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+        #newusername,
+        #username {
+            display: flex;
+            position: relative;
+            top: 60px;
+
+        }
+
+        #newpassword,
+        #password {
+            display: flex;
+            position: relative;
+            top: 60px;
+
+        }
+
+        #enter,
+        #newenter {
+            display: flex;
+            position: relative;
+            top: 60px;
+
+        }
+
+        .site-title {
+
+            font-size: 24px;
+            color: #ffffff;
+            transition: color 0.5s ease;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: "Bebas Neue", sans-serif;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="site-title">
+            <h1>FindMovie</h1>
+        </div>
+        <div class="left-side">
+            <div class="message">Hello there!</div>
+            <button class="button">New around here?</button>
+            <div class="login-form">
+                <!-- Existing user -->
+
+                <input id="username" type="text" placeholder="Username" required>
+                <input id="password" type="password" placeholder="Password" required>
+                <button id="enter" class="button">Login</button>
+            </div>
+        </div>
+        <div class="right-side">
+            <div class="message">Create an account</div>
+            <button class="button" onclick="goBack()">Do you have an account?</button>
+            <div class="login-form">
+
+                <!-- New user -->
+                <input id="newusername" type="text" placeholder="Username" required>
+                <input id="newpassword" type="password" placeholder="Password" required>
+                <button id="newenter" class="button">Enter</button>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        const container = document.querySelector('.login-container');
+        const button = document.querySelector('.button');
+
+        button.addEventListener('click', () => {
+            container.classList.toggle('show-right');
+            document.body.style.background = container.classList.contains('show-right') ? 'linear-gradient(to right, #000, #8e44ad)' : 'linear-gradient(to right, #8e44ad, #000)';
+            document.querySelector('.site-title').style.color = container.classList.contains('show-right') ? '#8e44ad' : '#fff';
+        });
+
+
+
+        function goBack() {
+            container.classList.remove('show-right');
+            container.classList.remove('show-right');
+            document.body.style.background = 'linear-gradient(to right, #8e44ad, #000)';
+            document.querySelector('.site-title').style.color = '#fff';
+        }
+    </script>
+</body>
+
+</html>
